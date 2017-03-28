@@ -22,7 +22,8 @@ const confige = require('../configes/confige');
  * cb 回调函数，func cb(e, token)
  * }
  * */
-exports.checkInWithNameAndPwd = function (name, pwd, cb) {
+exports.signInWithNameAndPwd = function (name, pwd, cb) {
     logger.info("进入。。checkInWithNameAndPwd")
     typeof cb === 'function' && cb(false, name + pwd);
 };
+

@@ -5,7 +5,7 @@ var confige = require('./../configes/confige');
 
 var hprose = require('hprose');
 
-var rpcServer = hprose.Client.create(confige.tcpHost);
+var client = hprose.Client.create(confige.tcpHost);
 
 function Base(){
 
@@ -15,6 +15,6 @@ Base.prototype.on = function(event,callback){
 }
 Base.prototype.emit= function(event, data){
 }
-Base.prototype.rpcServer = rpcServer
+Base.prototype.rpcServer = client;
 
 module.exports = Base;

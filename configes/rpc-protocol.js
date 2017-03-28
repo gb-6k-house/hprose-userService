@@ -15,9 +15,19 @@ var hprose = require('hprose');
 
 exports.start = function(){
     // rpc 发布接口列表布接口
-    var server = new hprose.server(confige.tcpHost);
+    var server =  hprose.Server.create(confige.tcpHost);
     // 发布接口列表布接口列表布接口列表
-   server.addAsyncFunction(userRpc.checkInWithNameAndPwd)
+
+    function hello(name, callback) {
+        setTimeout(function() {
+            callback("Hello " + name + "!");
+        }, 10);
+    }
+    server.addAsyncFunction(userRpc.signInWithNameAndPwd, "signInWithNameAndPwd");
+
+    server.addAsyncFunction(hello);
+
+
     // 启动服务
-    server.start()
+    server.start();
 }
