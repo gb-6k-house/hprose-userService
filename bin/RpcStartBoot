@@ -4,21 +4,13 @@
  * Module dependencies.
  */
 var confige = require('../configes/confige');
-var logger = new require('../../public/utils/logger').init( __dirname +"/../configes/log4js.json");
+var logger = new require('../utils/logger').init( __dirname +"/../configes/log4js.json");
 process.logger = logger;
-
-var redis = require('redis');
-var memDB = redis.createClient(confige.redis.port, confige.redis.ip);
-process.memDB = memDB;
-//推送通知
-var pushNotify = redis.createClient(confige.redis.port, confige.redis.ip);
-process.pushNotify = pushNotify;
-//启动xinge推送
-require('../rpc-controllers/pushNotifyRpc');
 
 var rpcServer = require('../configes/rpc-protocol');
 
 rpcServer.start();
+
 //我们可以uncaughtException来全局捕获未捕获的Error，同时你还可以将此函数的调用栈打印出来，捕获之后可以有效防止node进程退出
 //我们也可以用node-forever 提供了守护的功能和LOG日志记录功能。
 process.on('uncaughtException', function (err) {
