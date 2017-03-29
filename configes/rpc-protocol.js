@@ -23,7 +23,9 @@ exports.start = function(){
             callback("Hello " + name + "!");
         }, 10);
     }
+    server.addAsyncFunction(userRpc.signUpWithNameAndPwd, "signUpWithNameAndPwd");
     server.addAsyncFunction(userRpc.signInWithNameAndPwd, "signInWithNameAndPwd");
+    server.addAsyncFunction(userRpc.vertifyToken, "vertifyToken");
 
     server.addAsyncFunction(hello);
 

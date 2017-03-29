@@ -28,21 +28,3 @@ user.rpcServer.ready(function(proxy) {
 
     });
 });
-user.rpcServer.ready(function(proxy) {
-    proxy.signInWithNameAndPwd("abc","123", function (e, token) {
-        if (e) {
-            console.log("signInWithNameAndPwd服务器返回失败");
-
-        }else {
-            console.log("服务器返回token " + token);
-        }
-    }, function(name, err) {
-        console.error(err);
-    });
-
-    proxy.hello('world', function(result) {
-        console.log(result);
-    }, function (name, err) {
-
-    });
-});
