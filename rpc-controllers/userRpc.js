@@ -8,6 +8,7 @@
 'use strict';
 const logger = process.logger;
 const confige = require('../configes/confige');
+var uuid = require('node-uuid');
 
 /*
  *@接口名
@@ -23,7 +24,9 @@ const confige = require('../configes/confige');
  * */
 exports.signUpWithNameAndPwd = function (name, pwd, cb) {
     logger.info("进入。。signUpWithNameAndPwd")
-    typeof cb === 'function' && cb(false, name + pwd);
+    var token = uuid.v1()
+    logger.info("token = " + token)
+    typeof cb === 'function' && cb(token);
 };
 /*
  *@接口名
@@ -39,7 +42,8 @@ exports.signUpWithNameAndPwd = function (name, pwd, cb) {
  * */
 exports.signInWithNameAndPwd = function (name, pwd, cb) {
     logger.info("进入。。checkInWithNameAndPwd")
-    typeof cb === 'function' && cb(false, name + pwd);
+    var token = uuid.v1()
+    typeof cb === 'function' && cb(token)
 };
 
 /*
@@ -55,7 +59,7 @@ exports.signInWithNameAndPwd = function (name, pwd, cb) {
  * */
 exports.vertifyToken = function (token, cb) {
     logger.info("进入。。vertifyToken")
-    typeof cb === 'function' && cb(true);
+    typeof cb === 'function' && cb(true)
 };
 
 

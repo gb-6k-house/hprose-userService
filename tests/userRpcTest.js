@@ -3,28 +3,29 @@
  */
 
 var test = require('./baseTest')
+var should = require('should')
 function User(){
 }
 
 User.prototype = new test(); //建立原型链
 
-var user = new User();
 
-user.rpcServer.ready(function(proxy) {
-    proxy.signInWithNameAndPwd("abc","123", function (e, token) {
-        if (e) {
-            console.log("signInWithNameAndPwd服务器返回失败");
+describe('user rpc', function () {
+    var user = new User();
+    describe('signUpWithNameAndPwd', function () {
+        it('注册成功必须返回token', function (done) {
+            user.rpcServer.ready(function(proxy) {
+                proxy.signUpWithNameAndPwd("liukai", "123456", function(token) {
+                    should.exist(token)
+                    done()
+                }, function(name, err) {
+                    done(err)
+                });
 
-        }else {
-            console.log("服务器返回token " + token);
-        }
-    }, function(name, err) {
-        console.error(err);
-    });
+            });
+        })
+    })
 
-    proxy.hello('world', function(result) {
-        console.log(result);
-    }, function (name, err) {
+})
 
-    });
-});
+

@@ -8,6 +8,7 @@
 
 var confige = require('../configes/confige');
 var userRpc = require('../rpc-controllers/userRpc');
+const logger = process.logger;
 
 var hprose = require('hprose');
 
@@ -23,11 +24,12 @@ exports.start = function(){
             callback("Hello " + name + "!");
         }, 10);
     }
-    server.addAsyncFunction(userRpc.signUpWithNameAndPwd, "signUpWithNameAndPwd");
-    server.addAsyncFunction(userRpc.signInWithNameAndPwd, "signInWithNameAndPwd");
-    server.addAsyncFunction(userRpc.vertifyToken, "vertifyToken");
 
-    server.addAsyncFunction(hello);
+    server.addAsyncFunction(userRpc.signUpWithNameAndPwd, "signUpWithNameAndPwd")
+    server.addAsyncFunction(userRpc.signInWithNameAndPwd, "signInWithNameAndPwd")
+    server.addAsyncFunction(userRpc.vertifyToken, "vertifyToken")
+
+    server.addAsyncFunction(hello)
 
 
     // 启动服务
