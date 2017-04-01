@@ -8,7 +8,7 @@
 'use strict';
 const logger = process.logger;
 const confige = require('../configes/confige');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 /*
  *@接口名
