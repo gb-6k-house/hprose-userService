@@ -17,5 +17,9 @@ lib-cov:
 clean:
 	@rm -f coverage.html
 	@rm -rf ./coverage
+install:
+	@pm2 start ./bin/RpcStartBoot -i 1
+uninstall:
+	@pm2 stop ./bin/RpcStartBoot
 
 .PHONY: test test-cov lib-cov
