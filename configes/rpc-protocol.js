@@ -25,11 +25,11 @@ exports.start = function(){
         }, 10);
     }
 
-    server.addAsyncFunction(userRpc.signUpWithNameAndPwd, "signUpWithNameAndPwd")
-    server.addAsyncFunction(userRpc.signInWithNameAndPwd, "signInWithNameAndPwd")
-    server.addAsyncFunction(userRpc.vertifyToken, "vertifyToken")
+    server.addFunction(userRpc.signUp, "signUp")
+    server.addFunction(userRpc.signIn, "signIn")
+    server.addFunction(userRpc.vertifyToken, "vertifyToken")
 
-    server.addAsyncFunction(hello)
+    server.addFunction(hello)
 
 
     // 启动服务
